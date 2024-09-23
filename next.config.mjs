@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['www.gstatic.com'], // Add the domain of your image source here
+      domains: ['www.gstatic.com'],
     },
-};
-
-export default nextConfig;
+    experimental: {
+      workerThreads: true,
+      cpus: 4,
+    },
+  };
+  
+  export default nextConfig;

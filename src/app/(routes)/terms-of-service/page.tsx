@@ -12,14 +12,14 @@ export default function TermsOfService() {
           
           <h2>1. Acceptance of Terms</h2>
           <p>
-            By accessing and using PULSE News (the "Service"), you agree to be bound by these Terms of Service ("Terms"). 
+            By accessing and using PULSE News (the &quot;Service&quot;), you agree to be bound by these Terms of Service (&quot;Terms&quot;). 
             If you disagree with any part of the terms, you may not access the Service.
           </p>
           
           <h2>2. Content</h2>
           <p>
             Our Service allows you to post, link, store, share and otherwise make available certain information, text, graphics, 
-            videos, or other material ("Content"). You are responsible for the Content that you post on or through the Service, 
+            videos, or other material (&quot;Content&quot;). You are responsible for the Content that you post on or through the Service, 
             including its legality, reliability, and appropriateness.
           </p>
           

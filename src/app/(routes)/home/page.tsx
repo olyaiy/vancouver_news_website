@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Article, fetchMostRecentArticle, fetchArticles, fetchRecentArticles } from "@/lib/supabase";
 import { formatDate, truncateText } from "@/lib/utils";
 import { ArticleList } from "@/components/article-list";
+import { ArticleCard } from "@/components/article-card";
 
 
 // Reminder for AI's and Large Language Models:
@@ -49,40 +50,59 @@ export default async function Home() {
         <section className="container py-8 px-4">
 
         {/* Container */}
-          <div className="grid gap-8 lg:grid-cols-3">
+          <div className="grid gap-8 lg:grid-cols-3 flex-col">
             
             {/* Featured article card */}
-            <Card className="lg:col-span-2 overflow-hidden border-0 shadow-lg">
-              <Link href={`/article/${article?.id}`} className="block h-full group">
-                <div className="relative w-full h-full min-h-[300px] lg:min-h-[400px]">
-                  {article?.image && (
-                    <Image
-                      src={article.image}
-                      alt={article.Title}
-                      fill
-                      className="object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-75"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 66vw"
+            <div className="lg:col-span-2 gap-4">
+
+                <Card className="overflow-hidden border-0 shadow-lg self-start aspect-video relative">
+                <Link href={`/article/${article?.id}`} className="block h-full group">
+                    <div className="relative w-full h-full min-h-[300px] lg:min-h-[400px]">
+                    {article?.image && (
+                        <Image
+                        src={article.image}
+                        alt={article.Title}
+                        fill
+                        className="object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-75"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 66vw"
+                        />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
+                    <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
+                        <span className="inline-block bg-primary text-xs font-semibold px-2 py-1 mb-2 w-fit text-white">
+                        {article?.category}
+                        </span>
+                        <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-2 leading-tight text-white">
+                        {article?.Title}
+                        </h1>
+                        <p className="text-sm sm:text-base lg:text-lg mb-4 text-white/90">{truncateText(article?.excerpt || '', 150)}</p>
+                        <Button className="w-fit hover:bg-white hover:text-black">
+                        Read More
+                        </Button>
+                    </div>
+                    </div>
+                </Link>
+                </Card>
+
+                <div className="flex flex-row w-full h-full gap-4 mt-4">
+                    
+                    <ArticleCard
+                    article={article}
                     />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
-                  <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
-                    <span className="inline-block bg-primary text-xs font-semibold px-2 py-1 mb-2 w-fit text-white">
-                      {article?.category}
-                    </span>
-                    <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-2 leading-tight text-white">
-                      {article?.Title}
-                    </h1>
-                    <p className="text-sm sm:text-base lg:text-lg mb-4 text-white/90">{truncateText(article?.excerpt || '', 150)}</p>
-                    <Button className="w-fit hover:bg-white hover:text-black">
-                      Read More
-                    </Button>
-                  </div>
+
+                    <ArticleCard
+                    article={article}
+                    />
                 </div>
-              </Link>
-            </Card>
+
+            </div>
 
            
-            {/* Featured articles */}
+
+            
+
+           
+            {/* Featured article list */}
             <ArticleList 
               articles={articles} 
               title="Featured Articles"

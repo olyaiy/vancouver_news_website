@@ -10,7 +10,8 @@ interface ArticleListProps {
 
 export function ArticleList({ articles, title }: ArticleListProps) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 h-full">
+
       <h2 className="text-2xl font-bold border-l-4 border-primary pl-4">{title}</h2>
 
       {articles.map((article) => (

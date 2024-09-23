@@ -4,7 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Newspaper, Search, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Article, fetchMostRecentArticle, fetchArticles } from "@/lib/supabase";
+import { Article, fetchMostRecentArticle, fetchArticles, fetchRecentArticles } from "@/lib/supabase";
+import { formatDate, truncateText } from "@/lib/utils";
 
 // Reminder for AI's and Large Language Models:
 // This is the Article interface that is used.
@@ -31,8 +32,12 @@ import { Article, fetchMostRecentArticle, fetchArticles } from "@/lib/supabase";
 
 
 export default async function Home() {
+
+  // Fetch the most recent article
   const article = await fetchMostRecentArticle();
-  const articles = await fetchArticles();
+
+  // Fetch all articles 
+  const articles = await fetchRecentArticles(3);
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -65,7 +70,7 @@ export default async function Home() {
                     <h1 className="text-3xl md:text-4xl font-bold mb-2 leading-tight">
                       {article?.Title}
                     </h1>
-                    <p className="text-lg mb-4">{article?.excerpt}</p>
+                    <p className="text-lg mb-4">{truncateText(article?.excerpt || '', 150)}</p>
                     <Button className="hover:bg-white hover:text-black">
                       Read More
                     </Button>
@@ -74,23 +79,27 @@ export default async function Home() {
               </Link>
             </Card>
 
+            {/* Other articles */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold border-l-4 border-primary pl-4">Other Articles</h2>
-              {articles.map((item: Article) => (
-                <Card key={item.id} className="border-0 shadow-md hover:shadow-lg transition-shadow">
-                  <Link href={`/article/${item.id}`} className="block h-full">
+              <h2 className="text-2xl font-bold border-l-4 border-primary pl-4">Featured Articles</h2>
+
+              {/* Map through all articles */}
+                {articles.map((item: Article) => (
+                <Card key={item.id} className="border-0 shadow-md hover:shadow-lg transition-shadow group">
+                    <Link href={`/article/${item.id}`} className="block h-full">
                     <CardHeader className="p-4">
-                      <CardTitle className="text-lg font-bold">
+                        <CardTitle className="text-lg font-bold text-black group-hover:text-red-600 transition-colors duration-200">
                         {item.Title}
-                      </CardTitle>
+                        </CardTitle>
                     </CardHeader>
                     <CardFooter className="p-4 pt-0 flex justify-between">
-                      <span className="text-sm font-semibold text-primary">{item.category}</span>
-                      <span className="text-sm text-gray-500">{item.created_at}</span>
+                        <span className="text-sm font-semibold text-primary">{item.category}</span>
+                        <span className="text-sm text-gray-500">{formatDate(item.published_on)}</span>
                     </CardFooter>
-                  </Link>
+                    </Link>
                 </Card>
-              ))}
+                ))}
+
             </div>
           </div>
 

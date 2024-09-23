@@ -44,7 +44,8 @@ export async function fetchArticle(id: string) {
     return data as Article;
   }  
 
-//   Fetch most recent article
+
+//   Fetch most recent article (SINGULAR)
 export async function fetchMostRecentArticle() {
     const { data, error } = await supabase
         .from('articles')
@@ -61,7 +62,7 @@ export async function fetchMostRecentArticle() {
     return data as Article;
 }
   
-// Fetch all articles
+// Fetch all articles (PLURAL)
 export async function fetchArticles() {
     const { data, error } = await supabase
       .from('articles')
@@ -75,6 +76,23 @@ export async function fetchArticles() {
     console.log('Fetched articles:', data); // Log the fetched data
     return data as Article[];
   }
+
+// Fetch most recent X articles
+export async function fetchRecentArticles(limit: number = 5) {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(limit);
+  
+    if (error) {
+      console.error('Error fetching recent articles:', error);
+      return [];
+    }
+  
+    return data as Article[];
+  }
+  
 
 
 // Create a new article

@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input"
 
 export function Footer() {
   return (
-    <footer className="bg-gray-100 border-t">
+    <footer className="bg-gray-100 border-t mt-auto">
       <div className="container py-8 px-4 ">
         <div className="grid gap-8 md:grid-cols-4">
           <div>
@@ -16,11 +16,11 @@ export function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-4">Categories</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/world" className="hover:text-red-600">World</Link></li>
-              <li><Link href="/tech" className="hover:text-red-600">Tech</Link></li>
-              <li><Link href="/culture" className="hover:text-red-600">Culture</Link></li>
-              <li><Link href="/politics" className="hover:text-red-600">Politics</Link></li>
-              <li><Link href="/science" className="hover:text-red-600">Science</Link></li>
+              <li><Link href="/category/politics" className="hover:text-red-600">Politics</Link></li>
+              <li><Link href="/category/tech" className="hover:text-red-600">Tech</Link></li>
+              <li><Link href="/category/culture" className="hover:text-red-600">Culture</Link></li>
+              <li><Link href="/category/science" className="hover:text-red-600">Science</Link></li>
+              <li><Link href="/category/sports" className="hover:text-red-600">Sports</Link></li>
             </ul>
           </div>
           <div>

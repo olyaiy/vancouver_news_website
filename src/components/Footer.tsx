@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input"
 export function Footer() {
   return (
     <footer className="bg-gray-100 border-t">
-      <div className="container py-8 px-4">
+      <div className="container py-8 px-4 ">
         <div className="grid gap-8 md:grid-cols-4">
           <div>
             <h3 className="font-bold text-lg mb-4">About PULSE</h3>

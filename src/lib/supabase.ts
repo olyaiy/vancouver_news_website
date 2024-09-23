@@ -19,12 +19,14 @@ export interface Article {
     updated_on: string;
     is_published: boolean;
     category: string;
-    meta_title: string;
-    meta_description: string;
-    keywords: string | null;
+    meta_title: string | null;
+    meta_description: string | null;
+    keywords: string[] | null;
     image: string | null;
     og_image_url: string | null;
-  }
+    is_featured: boolean;
+    sources: string[] | null;
+}
 
 
 

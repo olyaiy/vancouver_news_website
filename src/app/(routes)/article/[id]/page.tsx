@@ -70,9 +70,10 @@ export default async function ArticlePage({ params }: { params: { id: string } }
     article = await fetchArticle(params.id)
     relatedArticles = await fetchRecentArticles(3)
   } catch (error) {
+    console.error('Error fetching article:', error)
     notFound()
   }
-
+  
   const publishDate = new Date(article.published_on)
   const updateDate = new Date(article.updated_on)
 

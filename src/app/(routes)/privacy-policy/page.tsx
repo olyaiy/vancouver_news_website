@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
           <p>Last updated: {new Date().toLocaleDateString()}</p>
           
           <p>
-            PULSE News ("us", "we", or "our") operates the https://www.pulsenews.com website (the "Service"). 
+            PULSE News (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;) operates the https://www.pulsenews.com website (the &quot;Service&quot;). 
             This page informs you of our policies regarding the collection, use, and disclosure of personal data 
             when you use our Service and the choices you have associated with that data.
           </p>
@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
           <h4>Personal Data</h4>
           <p>
             While using our Service, we may ask you to provide us with certain personally identifiable information 
-            that can be used to contact or identify you ("Personal Data"). Personally identifiable information may include, 
+            that can be used to contact or identify you (&quot;Personal Data&quot;). Personally identifiable information may include, 
             but is not limited to:
           </p>
           <ul>

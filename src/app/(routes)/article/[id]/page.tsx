@@ -9,7 +9,9 @@ import Link from 'next/link'
 import { Facebook, Twitter, Linkedin, Clock, Calendar, User } from 'lucide-react'
 import { fetchArticle, fetchRecentArticles } from '@/lib/supabase'
 import { Article } from '@/lib/supabase'
-import RelatedArticles from '@/components/related-articles'
+import { ArticleList } from '@/components/article-list'
+
+
 
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
@@ -99,8 +101,10 @@ export default async function ArticlePage({ params }: { params: { id: string } }
         </article>
         <aside className="lg:w-1/3">
           <div className="sticky top-20">
-            <h2 className="text-2xl font-bold mb-4 text-gray-900">Related Articles</h2>
-            <RelatedArticles articles={relatedArticles} />
+            <ArticleList 
+              articles={relatedArticles} 
+              title="Related Articles"
+            />
           </div>
         </aside>
       </div>

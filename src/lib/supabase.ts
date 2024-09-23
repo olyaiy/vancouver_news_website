@@ -130,3 +130,20 @@ export async function searchArticles(query: string) {
 
   return data as Article[];
 }
+
+
+// Fetch articles by category
+export async function fetchArticlesByCategory(category: string) {
+  const { data, error } = await supabase
+    .from('articles')
+    .select('*')
+    .eq('category', category)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching articles by category:', error);
+    return [];
+  }
+
+  return data as Article[];
+}

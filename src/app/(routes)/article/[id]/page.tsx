@@ -1,8 +1,6 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { format } from 'date-fns'
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Metadata } from 'next'
 import Link from 'next/link'
@@ -10,6 +8,7 @@ import { Facebook, Twitter, Linkedin, Clock, Calendar, User } from 'lucide-react
 import { fetchArticle, fetchRecentArticles } from '@/lib/supabase'
 import { Article } from '@/lib/supabase'
 import { ArticleList } from '@/components/article-list'
+import { Button } from '@/components/ui/button'
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const article = await fetchArticle(params.id)

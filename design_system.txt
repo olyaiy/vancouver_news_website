@@ -1,0 +1,343 @@
+I'll create a comprehensive design system for your news website. This design system will cover various aspects of your site's visual language and component library, ensuring consistency across your entire platform.
+
+Here's a comprehensive design system for your news website:
+
+# PULSE News Design System
+
+## 1. Color Palette
+
+```typescriptreact
+const colors = {
+  primary: {
+    50: '#FFF5F5',
+    100: '#FED7D7',
+    200: '#FEB2B2',
+    300: '#FC8181',
+    400: '#F56565',
+    500: '#E53E3E', // Primary brand color
+    600: '#C53030',
+    700: '#9B2C2C',
+    800: '#822727',
+    900: '#63171B',
+  },
+  gray: {
+    50: '#F9FAFB',
+    100: '#F3F4F6',
+    200: '#E5E7EB',
+    300: '#D1D5DB',
+    400: '#9CA3AF',
+    500: '#6B7280',
+    600: '#4B5563',
+    700: '#374151',
+    800: '#1F2937',
+    900: '#111827',
+  },
+  white: '#FFFFFF',
+  black: '#000000',
+}
+```
+
+Usage:
+
+- Primary color (red) for main actions, highlights, and branding
+- Gray scale for text, backgrounds, and UI elements
+- White for backgrounds and text on dark surfaces
+- Black for text and UI elements on light surfaces
+
+
+## 2. Typography
+
+```typescriptreact
+const typography = {
+  fontFamily: {
+    sans: ['Inter', 'sans-serif'],
+    serif: ['Georgia', 'serif'],
+  },
+  fontSize: {
+    xs: '0.75rem',
+    sm: '0.875rem',
+    base: '1rem',
+    lg: '1.125rem',
+    xl: '1.25rem',
+    '2xl': '1.5rem',
+    '3xl': '1.875rem',
+    '4xl': '2.25rem',
+    '5xl': '3rem',
+  },
+  fontWeight: {
+    normal: '400',
+    medium: '500',
+    semibold: '600',
+    bold: '700',
+  },
+  lineHeight: {
+    tight: '1.25',
+    snug: '1.375',
+    normal: '1.5',
+    relaxed: '1.625',
+  },
+}
+```
+
+Usage:
+
+- Sans-serif (Inter) for UI elements and body text
+- Serif (Georgia) for headlines and article titles
+- Varied font sizes for hierarchy
+- Different font weights for emphasis
+
+
+## 3. Spacing
+
+```typescriptreact
+const spacing = {
+  px: '1px',
+  0: '0',
+  0.5: '0.125rem',
+  1: '0.25rem',
+  2: '0.5rem',
+  3: '0.75rem',
+  4: '1rem',
+  5: '1.25rem',
+  6: '1.5rem',
+  8: '2rem',
+  10: '2.5rem',
+  12: '3rem',
+  16: '4rem',
+  20: '5rem',
+  24: '6rem',
+  32: '8rem',
+  40: '10rem',
+  48: '12rem',
+  56: '14rem',
+  64: '16rem',
+}
+```
+
+Usage:
+
+- Consistent spacing for margins, paddings, and gaps
+- Smaller values for tight spaces, larger values for sections and layouts
+
+
+## 4. Breakpoints
+
+```typescriptreact
+const breakpoints = {
+  sm: '640px',
+  md: '768px',
+  lg: '1024px',
+  xl: '1280px',
+  '2xl': '1536px',
+}
+```
+
+Usage:
+
+- Responsive design breakpoints for different screen sizes
+
+
+## 5. Components
+
+### 5.1 Buttons
+
+```typescriptreact
+import { Button } from "@/components/ui/button"
+
+export function ButtonExamples() {
+  return (
+    <div className="flex space-x-4">
+      <Button variant="default">Default</Button>
+      <Button variant="destructive">Destructive</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="link">Link</Button>
+    </div>
+  )
+}
+```
+
+Usage:
+
+- Default: Primary actions
+- Destructive: Dangerous or irreversible actions
+- Outline: Secondary actions
+- Secondary: Alternate actions
+- Ghost: Subtle actions
+- Link: Navigation actions
+
+
+### 5.2 Cards
+
+```typescriptreact
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+
+export function CardExample() {
+  return (
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card Description</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Card Content</p>
+      </CardContent>
+      <CardFooter>
+        <p>Card Footer</p>
+      </CardFooter>
+    </Card>
+  )
+}
+```
+
+Usage:
+
+- For displaying article previews, user profiles, or grouped information
+
+
+### 5.3 Navigation
+
+```typescriptreact
+import Link from 'next/link'
+
+export function Navigation() {
+  return (
+    <nav className="flex space-x-4">
+      <Link href="/" className="text-gray-600 hover:text-primary-500">Home</Link>
+      <Link href="/world" className="text-gray-600 hover:text-primary-500">World</Link>
+      <Link href="/tech" className="text-gray-600 hover:text-primary-500">Tech</Link>
+      <Link href="/culture" className="text-gray-600 hover:text-primary-500">Culture</Link>
+      <Link href="/politics" className="text-gray-600 hover:text-primary-500">Politics</Link>
+    </nav>
+  )
+}
+```
+
+Usage:
+
+- For main navigation and sub-navigation elements
+
+
+### 5.4 Form Elements
+
+```typescriptreact
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+export function FormExample() {
+  return (
+    <div className="space-y-4">
+      <div className="space-y-2">
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="email" placeholder="Enter your email" />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="password">Password</Label>
+        <Input id="password" type="password" />
+      </div>
+    </div>
+  )
+}
+```
+
+Usage:
+
+- For user input in forms, search fields, and interactive elements
+
+
+## 6. Layout
+
+### 6.1 Grid System
+
+Use Tailwind's grid classes for layout:
+
+```html
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <!-- Grid items -->
+</div>
+```
+
+### 6.2 Container
+
+Use a container for consistent content width:
+
+```html
+<div className="container mx-auto px-4">
+  <!-- Content -->
+</div>
+```
+
+## 7. Icons
+
+Use Lucide React for consistent iconography:
+
+```typescriptreact
+import { Search, Menu, User } from 'lucide-react'
+
+export function IconExamples() {
+  return (
+    <div className="flex space-x-4">
+      <Search className="h-6 w-6" />
+      <Menu className="h-6 w-6" />
+      <User className="h-6 w-6" />
+    </div>
+  )
+}
+```
+
+## 8. Animations
+
+Use Tailwind's transition and animation utilities for subtle animations:
+
+```html
+<button className="transition-colors duration-200 ease-in-out hover:bg-primary-600">
+  Hover me
+</button>
+```
+
+## 9. Accessibility
+
+- Use semantic HTML elements
+- Provide appropriate ARIA labels
+- Ensure sufficient color contrast
+- Support keyboard navigation
+
+
+```typescriptreact
+import { Button } from "@/components/ui/button"
+
+export function AccessibleButton() {
+  return (
+    <Button aria-label="Subscribe to newsletter">
+      Subscribe
+    </Button>
+  )
+}
+```
+
+## 10. Dark Mode
+
+Implement dark mode using Tailwind's dark mode feature:
+
+```html
+<div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+  <!-- Content -->
+</div>
+```
+
+## 11. Custom CSS
+
+For any custom styles not covered by Tailwind, use a separate CSS file:
+
+```css
+@layer components {
+  .article-body {
+    @apply prose prose-lg max-w-none;
+  }
+}
+```
+
+This comprehensive design system provides a solid foundation for your news website. It covers colors, typography, spacing, components, layout, icons, animations, accessibility, and dark mode support. By consistently applying these design principles and components across your site, you'll create a cohesive and professional user experience.
+
+Remember to document any additions or changes to this design system as your project evolves. You may also want to create a living style guide or component library to showcase these elements in action.

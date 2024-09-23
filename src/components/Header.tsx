@@ -32,10 +32,10 @@ export function Header() {
           </Link>
         </div>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          <Link href="/category/world" className="text-red-600 hover:text-red-800">World</Link>
+          <Link href="/category/politics" className="text-red-600 hover:text-red-800">Politics</Link>
+          <Link href="/category/world" className="hover:text-red-600">World</Link>
           <Link href="/category/tech" className="hover:text-red-600">Tech</Link>
-          <Link href="/category/culture" className="hover:text-red-600">Culture</Link>
-          <Link href="/category/politics" className="hover:text-red-600">Politics</Link>
+          <Link href="/category/sports" className="hover:text-red-600">Sports</Link>
           <Link href="/category/science" className="hover:text-red-600">Science</Link>
         </nav>
         <div className="flex items-center space-x-4">

@@ -43,8 +43,12 @@ export function Footer() {
             </form>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t text-center text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} PULSE News. All rights reserved.</p>
+        <div className="mt-8 pt-8 border-t text-center text-sm text-gray-500 w-full">
+          <div className="flex justify-center gap-2">
+            <p>© {new Date().getFullYear()} PULSE News. All rights reserved.</p>
+            <p><Link href="/privacy-policy" className="text-gray-500 underline">Privacy Policy</Link></p>
+            <p><Link href="/terms-of-service" className="text-gray-500 underline">Terms of Service</Link></p>
+          </div>
         </div>
       </div>
     </footer>

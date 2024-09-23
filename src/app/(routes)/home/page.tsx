@@ -51,27 +51,27 @@ export default async function Home() {
             
             {/* Featured article card */}
             <Card className="lg:col-span-2 overflow-hidden border-0 shadow-lg">
-              <Link href={`/article/${article?.id}`} className="block h-full">
-                <div className="relative h-full lg:h-full group">
+              <Link href={`/article/${article?.id}`} className="block h-full group">
+                <div className="relative w-full h-full min-h-[300px] lg:min-h-[400px]">
                   {article?.image && (
                     <Image
                       src={article.image}
                       alt={article.Title}
                       fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-75"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 66vw"
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-6 text-white">
-                    <span className="inline-block bg-primary text-xs font-semibold px-2 py-1 mb-2">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
+                  <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
+                    <span className="inline-block bg-primary text-xs font-semibold px-2 py-1 mb-2 w-fit text-white">
                       {article?.category}
                     </span>
-                    <h1 className="text-3xl md:text-4xl font-bold mb-2 leading-tight">
+                    <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-2 leading-tight text-white">
                       {article?.Title}
                     </h1>
-                    <p className="text-lg mb-4">{truncateText(article?.excerpt || '', 150)}</p>
-                    <Button className="hover:bg-white hover:text-black">
+                    <p className="text-sm sm:text-base lg:text-lg mb-4 text-white/90">{truncateText(article?.excerpt || '', 150)}</p>
+                    <Button className="w-fit hover:bg-white hover:text-black">
                       Read More
                     </Button>
                   </div>

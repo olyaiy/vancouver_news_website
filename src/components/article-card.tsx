@@ -11,8 +11,6 @@ interface ArticleCardProps {
 
 export function ArticleCard({ article }: ArticleCardProps) {
   return (
-    <>
-
     <Card className="overflow-hidden border-0 shadow-lg self-start aspect-[4/3] relative w-full">
       <Link href={`/article/${article.id}`} className="block h-full group">
         <div className="relative w-full h-full min-h-[200px]">
@@ -26,23 +24,19 @@ export function ArticleCard({ article }: ArticleCardProps) {
             />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
+          <span className="absolute top-2 right-2 inline-block bg-primary text-xs font-semibold px-2 py-1 text-white rounded">
+            {article.category}
+          </span>
           <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
-            <span className="inline-block bg-primary text-xs font-semibold px-2 py-1 mb-2 w-fit text-white">
-              {article.category}
-            </span>
-            <h2 className="text-lg sm:text-xl font-bold mb-2 leading-tight text-white">
+            <h2 className="text-sm sm:text-lg md:text-xl font-bold mb-2 leading-tight text-white mb-2">
               {article.Title}
             </h2>
-            <p className="text-xs sm:text-sm mb-4 text-white/90">
-              {truncateText(article.excerpt || '', 100)}
-            </p>
-            <Button className="w-fit hover:bg-white hover:text-black">
+            <Button className="w-fit hover:bg-white hover:text-black text-xs sm:text-sm">
               Read More
             </Button>
           </div>
         </div>
       </Link>
     </Card>
-    </>
   );
 }

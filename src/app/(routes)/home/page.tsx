@@ -68,10 +68,10 @@ export default async function Home() {
                         />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
-                    <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
-                        <span className="inline-block bg-primary text-xs font-semibold px-2 py-1 mb-2 w-fit text-white">
+                    <span className="absolute top-4 right-4 inline-block bg-primary text-xs font-semibold px-2 py-1 text-white rounded">
                         {article?.category}
-                        </span>
+                    </span>
+                    <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
                         <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-2 leading-tight text-white">
                         {article?.Title}
                         </h1>

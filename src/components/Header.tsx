@@ -1,11 +1,25 @@
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Newspaper, Search, Menu } from 'lucide-react'
 
 export function Header() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center space-x-4">
           <Button variant="ghost" size="icon" className="md:hidden">
@@ -25,13 +39,15 @@ export function Header() {
           <Link href="/science" className="hover:text-red-600">Science</Link>
         </nav>
         <div className="flex items-center space-x-4">
-          <form className="hidden md:block">
+          <form onSubmit={handleSearch} className="hidden md:block">
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
               <Input
                 type="search"
                 placeholder="Search..."
                 className="pl-8 w-[200px] bg-gray-100 focus:bg-white"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
           </form>

@@ -111,3 +111,22 @@ export async function createArticle(article: Omit<Article, 'id' | 'created_at' |
 
     return data as Article;
 }
+
+
+// Search articles
+export async function searchArticles(query: string) {
+  const { data, error } = await supabase
+    .from('articles')
+    .select('*')
+    .textSearch('Title', query, {
+      type: 'websearch',
+      config: 'english'
+    });
+
+  if (error) {
+    console.error('Error searching articles:', error);
+    return [];
+  }
+
+  return data as Article[];
+}
